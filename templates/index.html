@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA BLAST Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">DNA BLAST Search</h1>
+        <div class="row mt-4">
+            <div class="col-8 offset-2">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="blastForm" method="post">
+                            <div class="mb-3">
+                                <label for="fastaText" class="form-label">Enter DNA Sequence (FASTA format)</label>
+                                <textarea id="fastaText" name="fasta_text" class="form-control" rows="6" placeholder=">sequence_name&#10;ATCGATCGATCG"></textarea>
+                            </div>
+                            <div class="d-flex gap-2 align-items-center">
+                                <button id="loadTestExample" type="button" class="btn btn-outline-secondary btn-sm">Load Dummy Example</button>
+                                <button id="loadRealExample" type="button" class="btn btn-outline-secondary btn-sm">Load Real Example</button>
+                                <div class="flex-grow-1"></div>
+                                <button type="submit" class="btn btn-primary">Run BLAST</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="results" class="mt-4" style="display:none;">
+            <h3>Results</h3>
+            <div id="queryInfo" class="mb-3"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Accession</th>
+                        <th>Identity</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTable"></tbody>
+            </table>
+        </div>
+        <div id="error" class="alert alert-danger mt-4" style="display:none;"></div>
+    </div>
+
+    <script src="/static/js/blast.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+service: dna-blast-app
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-1
+  stage: \${opt:stage, 'dev'}
+  timeout: 300
+  memorySize: 512
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: '*'
+
+functions:
+  blast:
+    handler: handler.blast
+    events:
+      - http:
+          path: blast
+          method: post
+          cors: true
+      - http:
+          path: blast
+          method: options
+          cors: true
+
+  frontend:
+    handler: handler.serve_frontend
+    events:
+      - http:
+          path: /
+          method: get
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+    layer: true
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!.git/**'
+    - '!.github/**'
+    - '!venv/**'
+    - '!__pycache__/**'
+    - 'handler.py'
+    - 'app.py'
+    - 'templates/**'
