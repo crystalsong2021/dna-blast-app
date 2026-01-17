@@ -1,146 +1,116 @@
 # DNA BLAST Search Web Application
 
-A lightweight web application for submitting DNA sequences in FASTA format and running **NCBI BLAST (blastn)** searches using **Biopython**.
-Designed as a clean demo project showcasing modular frontend architecture and a simple Flask backend.
+Lightweight web app for submitting DNA sequences in FASTA format and running NCBI BLAST (blastn) using Biopython. Designed as a demo with a simple Flask backend and a modular vanilla-JS frontend.
 
 ---
 
 ## Features
 
-- 🧬 Accepts DNA sequences via:
-  - Text input (FASTA format)
-  - FASTA file upload (.fasta, .fa, .txt)
-- ✅ FASTA format and nucleotide validation
-- 🔬 Runs `blastn` against NCBI `core_nt` database
-- ⚡ Processes **multiple sequences sequentially** with streaming results
-- 📊 Displays BLAST hits in sortable, readable tables
-- 🧩 Modular JavaScript architecture (API, state, UI, results)
-- 🎨 Styled with Bootstrap 5
+- Accepts DNA sequences via text input (FASTA) or FASTA file upload (.fasta, .fa, .txt)
+- FASTA format and nucleotide validation
+- Sequential BLAST submissions with incremental rendering of results
+- Safe DOM updates to reduce XSS risk
+- Modular frontend: api.js, state.js, dom.js, ui-helpers.js, file-handler.js, results.js, main.js
 
 ---
 
 ## Tech Stack
 
-### Backend
-- Python 3
-- Flask
-- Biopython (`NCBIWWW`, `NCBIXML`)
+- Python 3, Flask
+- Biopython (NCBIWWW, NCBIXML)
+- Vanilla JavaScript, Bootstrap 5
 - certifi (SSL compatibility)
 
-### Frontend
-- Vanilla JavaScript (modular pattern)
-- Bootstrap 5
-- HTML5 / CSS3
-
-## Design Decisions
-
-- The app supports a single FASTA sequence per submission, which matches common BLAST usage and keeps the interface simple.
-- BLAST queries are submitted sequentially to respect NCBI usage guidelines.
-- Biopython is used both for FASTA parsing and BLAST submission to ensure correctness.
-- Bootstrap is used for lightweight styling without additional frontend frameworks.
-
 ---
 
-## Project Structure
-project-root/
-│
-├── app/
-│ ├── init.py
-│ ├── routes/
-│ │ └── blast_routes.py
-│ ├── services/
-│ │ └── blast_service.py
-│ ├── utils/
-│ │ └── fasta_validator.py
-│ └── config.py
-│
+## Project structure (actual)
+
+app/
+├── __init__.py               # Flask app factory / initialization
+├── config.py                 # Environment & NCBI settings
+├── routes.py                 # API endpoints
+├── services/
+│   ├── blast.py              # Biopython + NCBI interaction
+│   ├── cache.py              # Simple caching utilities
+│   ├── fasta.py              # FASTA parsing / validation
+│   └── mock.py               # Mock helpers for tests/dev
 ├── static/
-│ ├── css/style.css
-│ └── js/
-│ ├── api.js # API communication layer
-│ ├── state.js # Central app state
-│ ├── dom.js # DOM references
-│ ├── ui-helpers.js # UI utilities
-│ ├── file-handler.js # File upload logic
-│ ├── results.js # BLAST results rendering
-│ └── main.js # App controller
-│
-├── templates/
-│ └── index.html
-│
-├── run.py
-├── requirements.txt
-└── README.md
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       ├── api.js
+│       ├── dom.js
+│       ├── file-handler.js
+│       ├── main.js
+│       ├── results.js
+│       ├── state.js
+│       └── ui-helpers.js
+└── templates/
+    └── index.html
 
+Other files (root)
+- requirements.txt
+- README.md
 
 ---
 
-## Installation & Setup
+## Installation (macOS / Linux)
 
-### 1. Create virtual environment
+1. Create and activate virtualenv
 ```bash
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+python3 -m venv venv
+source venv/bin/activate
+```
 
 2. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-3. Run the app
-python run.py
+3. Run the app (Flask)
+```bash
+export FLASK_APP=app
+export FLASK_ENV=development
+flask run --port 5001
+```
+or
+```bash
+python -m flask run --app app --port 5001
+```
 
+Open: http://127.0.0.1:5001
 
-Visit:
+Notes: these commands expect app/__init__.py to expose an app factory or app object. If your entrypoint differs, run the script you use locally (for example: python run.py).
 
-http://127.0.0.1:5001
+---
 
-How It Works (High-Level)
+## How it works (high-level)
 
-User submits FASTA text or file
+1. User provides FASTA text or uploads a FASTA file.
+2. Frontend posts FASTA to /blast which validates and returns the parsed sequence list.
+3. Frontend sends each sequence to /blast_single sequentially.
+4. Each /blast_single response is rendered immediately as it arrives (incremental tabs).
+5. Backend uses Biopython to call NCBI BLAST and parse XML results.
 
-/blast endpoint:
-
-validates FASTA
-
-parses multiple sequences
-
-Frontend streams sequences one-by-one
-
-/blast_single:
-
-submits each sequence to NCBI BLAST
-
-parses XML results
-
-Results appear as soon as each sequence finishes
-
-Notes
-
-Uses NCBI public BLAST API (no local database)
-
-Designed for demo / educational use
-
-NCBI rate limits apply (avoid large batches)
-
+---
 
 ## Testing
 
-A small standalone test file is included to validate FASTA input handling.
-
-To run the FASTA validation tests:
-
+If present, run the FASTA validation test:
 ```bash
 python test_validation.py
+```
+Or run your test suite (pytest) if configured:
+```bash
+pytest
+```
 
 ---
-##
-Future Improvements
 
-Background task queue (Celery / RQ)
+## Notes & Recommendations
 
-Accession links to NCBI
+- Default behavior limits top hits to protect against long runtimes and NCBI rate limits. Make hit count configurable with a reasonable server-side cap.
+- The handler.py adapter (for AWS Lambda) is optional — remove it if not used.
+- For heavy usage, use a background queue (Celery/RQ) and/or a local BLAST installation.
 
-Result export (CSV)
-
-Local BLAST support
-
-
+---
