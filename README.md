@@ -1,94 +1,146 @@
-# DNA BLAST Web Application - Serverless
+# DNA BLAST Search Web Application
 
-A serverless DNA BLAST search application deployed on AWS Lambda with automated CI/CD.
+A lightweight web application for submitting DNA sequences in FASTA format and running **NCBI BLAST (blastn)** searches using **Biopython**.
+Designed as a clean demo project showcasing modular frontend architecture and a simple Flask backend.
 
-## 🌐 Live Demo
+---
 
-**Coming soon** - Will be deployed after first push to main branch.
+## Features
 
-## 🚀 Features
+- 🧬 Accepts DNA sequences via:
+  - Text input (FASTA format)
+  - FASTA file upload (.fasta, .fa, .txt)
+- ✅ FASTA format and nucleotide validation
+- 🔬 Runs `blastn` against NCBI `core_nt` database
+- ⚡ Processes **multiple sequences sequentially** with streaming results
+- 📊 Displays BLAST hits in sortable, readable tables
+- 🧩 Modular JavaScript architecture (API, state, UI, results)
+- 🎨 Styled with Bootstrap 5
 
-- ✅ Accepts DNA sequences in FASTA format
-- ✅ Validates input before submission
-- ✅ Searches NCBI's nucleotide database (blastn against nt)
-- ✅ Displays results in clean, sortable table
-- ✅ Serverless architecture (AWS Lambda)
-- ✅ Automated CI/CD pipeline (GitHub Actions)
-- ✅ File upload support
+---
 
-## 🏗️ Architecture
+## Tech Stack
 
-GitHub → GitHub Actions → AWS Lambda + API Gateway → NCBI BLAST
+### Backend
+- Python 3
+- Flask
+- Biopython (`NCBIWWW`, `NCBIXML`)
+- certifi (SSL compatibility)
+
+### Frontend
+- Vanilla JavaScript (modular pattern)
+- Bootstrap 5
+- HTML5 / CSS3
+
+## Design Decisions
+
+- The app supports a single FASTA sequence per submission, which matches common BLAST usage and keeps the interface simple.
+- BLAST queries are submitted sequentially to respect NCBI usage guidelines.
+- Biopython is used both for FASTA parsing and BLAST submission to ensure correctness.
+- Bootstrap is used for lightweight styling without additional frontend frameworks.
+
+---
+
+## Project Structure
+project-root/
+│
+├── app/
+│ ├── init.py
+│ ├── routes/
+│ │ └── blast_routes.py
+│ ├── services/
+│ │ └── blast_service.py
+│ ├── utils/
+│ │ └── fasta_validator.py
+│ └── config.py
+│
+├── static/
+│ ├── css/style.css
+│ └── js/
+│ ├── api.js # API communication layer
+│ ├── state.js # Central app state
+│ ├── dom.js # DOM references
+│ ├── ui-helpers.js # UI utilities
+│ ├── file-handler.js # File upload logic
+│ ├── results.js # BLAST results rendering
+│ └── main.js # App controller
+│
+├── templates/
+│ └── index.html
+│
+├── run.py
+├── requirements.txt
+└── README.md
 
 
-## 💻 Local Development
+---
 
-### Prerequisites
-- Python 3.11+
-- pip
+## Installation & Setup
 
-### Setup
-
+### 1. Create virtual environment
 ```bash
-# Clone repository
-git clone https://github.com/YOUR_USERNAME/dna-blast-app.git
-cd dna-blast-app
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Install dependencies
+2. Install dependencies
 pip install -r requirements.txt
 
-# Run locally
-python app.py
-Visit http://localhost:5000
+3. Run the app
+python run.py
 
-🧪 Testing
-# Run tests
+
+Visit:
+
+http://127.0.0.1:5001
+
+How It Works (High-Level)
+
+User submits FASTA text or file
+
+/blast endpoint:
+
+validates FASTA
+
+parses multiple sequences
+
+Frontend streams sequences one-by-one
+
+/blast_single:
+
+submits each sequence to NCBI BLAST
+
+parses XML results
+
+Results appear as soon as each sequence finishes
+
+Notes
+
+Uses NCBI public BLAST API (no local database)
+
+Designed for demo / educational use
+
+NCBI rate limits apply (avoid large batches)
+
+
+## Testing
+
+A small standalone test file is included to validate FASTA input handling.
+
+To run the FASTA validation tests:
+
+```bash
 python test_validation.py
-📦 Deployment
-Manual Deployment
-# Install Serverless Framework
-npm install -g serverless
-npm install --save-dev serverless-python-requirements
 
-# Configure AWS credentials
-aws configure
+---
+##
+Future Improvements
 
-# Deploy
-serverless deploy --stage prod
-Automatic Deployment (CI/CD)
-Every push to
-main
-branch automatically:
+Background task queue (Celery / RQ)
 
-✅ Runs tests
-✅ Deploys to AWS Lambda
-✅ Updates live application
-🛠️ Tech Stack
-Backend: Python 3.11, Flask, Biopython
-Cloud: AWS Lambda, API Gateway
-Frontend: HTML, Bootstrap 5, Vanilla JavaScript
-CI/CD: GitHub Actions
-IaC: Serverless Framework
-💰 Cost
-AWS Lambda free tier: 1M requests/month + 400,000 GB-seconds compute.
+Accession links to NCBI
 
-Estimated cost for demo usage: $0.00/month ✅
+Result export (CSV)
 
-📝 Design Decisions
-Serverless Architecture: Chose Lambda for cost-efficiency and auto-scaling
-Single Repository: All code (app + infrastructure + CI/CD) in one place
-Biopython: Used official NCBI BLAST API wrapper for reliability
-Bootstrap: Clean, responsive UI without custom CSS complexity
-Vanilla JavaScript: No framework overhead for simple interactivity
-🔐 Security
-HTTPS enabled via API Gateway
-CORS configured for secure cross-origin requests
-AWS credentials stored as GitHub Secrets
-Input validation prevents malformed requests
-📄 License
-MIT License
+Local BLAST support
+
 

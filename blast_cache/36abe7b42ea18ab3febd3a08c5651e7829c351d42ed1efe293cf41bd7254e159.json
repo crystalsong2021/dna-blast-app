@@ -1,0 +1,116 @@
+{
+  "query_id": "No definition line",
+  "query_length": 305,
+  "hits": [
+    {
+      "title": "gi|3056091481|gb|CP199108.1| Acinetobacter baumannii strain ABO22-A116 chromosome, complete genome",
+      "accession": "CP199108",
+      "length": 3839883,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3056118973|gb|CP199097.1| Acinetobacter baumannii strain ABO22-A097 chromosome, complete genome",
+      "accession": "CP199097",
+      "length": 3926820,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3093666821|gb|CP199979.1| Acinetobacter baumannii strain AB2012 chromosome, complete genome",
+      "accession": "CP199979",
+      "length": 3986010,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3062867801|gb|CP194385.1| Acinetobacter baumannii strain HN85 NT chromosome, complete genome",
+      "accession": "CP194385",
+      "length": 3976648,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3056084613|gb|CP199109.1| Acinetobacter baumannii strain ABO22-A115 chromosome, complete genome",
+      "accession": "CP199109",
+      "length": 3839946,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3042825338|gb|CP196930.1| Acinetobacter baumannii strain AB16-AUFP chromosome, complete genome",
+      "accession": "CP196930",
+      "length": 4085138,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3062864116|gb|CP194386.1| Acinetobacter baumannii strain HN85 SR chromosome, complete genome",
+      "accession": "CP194386",
+      "length": 3985743,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3056183412|gb|CP199078.1| Acinetobacter baumannii strain ABO21-A063 chromosome, complete genome",
+      "accession": "CP199078",
+      "length": 3842504,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3056190394|gb|CP199082.1| Acinetobacter baumannii strain ABO21-A051 chromosome, complete genome",
+      "accession": "CP199082",
+      "length": 3945406,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3048499025|gb|CP197592.1| Acinetobacter baumannii strain INC354 chromosome, complete genome",
+      "accession": "CP197592",
+      "length": 3812954,
+      "percent_identity": 100.0,
+      "alignment_length": 305,
+      "e_value": 3.02501e-152,
+      "score": 610.0,
+      "identities": 305,
+      "gaps": 0
+    }
+  ]
+}
