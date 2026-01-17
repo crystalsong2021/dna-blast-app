@@ -76,10 +76,10 @@ def test_with_n_character():
 def test_multiple_fasta_sequences():
     """Test FASTA input containing multiple sequences"""
     fasta = """>seq1
-ATCGATCGATCGATCGATCG
->seq2
-GCTAGCTAGCTAGCTAGCTA
-"""
+    ATCGATCGATCGATCGATCG
+    >seq2
+    GCTAGCTAGCTAGCTAGCTA
+    """
 
     is_valid, error, sequences = validate_fasta(fasta)
 
