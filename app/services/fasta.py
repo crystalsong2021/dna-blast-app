@@ -1,6 +1,16 @@
+"""
+FASTA validation utilities.
+
+Validates FASTA format, sequence length, and allowed IUPAC nucleotide
+codes as accepted by NCBI BLAST (blastn).
+"""
+
 from Bio import SeqIO
 from io import StringIO
 
+# Allow IUPAC nucleotide ambiguity codes and gap characters ('-')
+# Gap characters are commonly present in aligned or consensus FASTA files
+# and are tolerated by NCBI BLAST.
 VALID_NTS = set("ATCGNRYSWKMBDHV-")
 
 def validate_fasta(fasta_text):

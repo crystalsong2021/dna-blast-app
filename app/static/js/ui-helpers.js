@@ -1,4 +1,4 @@
-// ui-helpers.js - UI utility functions
+//UI utility functions
 
 const UIHelpers = {
   /**

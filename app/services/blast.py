@@ -17,10 +17,10 @@ def run_blast(sequence: str):
     #Check cache first
     cached = load_from_cache(sequence)
     if cached:
-        print("✅ BLAST cache hit")
+        print("BLAST cache hit")
         return True, cached
 
-    print("Cache miss – submitting BLAST to NCBI")
+    print("Cache miss! submitting BLAST to NCBI")
 
     try:
         result_handle = NCBIWWW.qblast(

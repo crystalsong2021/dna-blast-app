@@ -1,4 +1,4 @@
-// main.js - Main application controller (Refactored)
+// Main application controller
 // Dependencies: state.js, dom.js, ui-helpers.js, results.js, api.js, file-handler.js
 
 document.addEventListener('DOMContentLoaded', () => {

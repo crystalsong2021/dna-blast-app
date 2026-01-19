@@ -1,4 +1,4 @@
-// state.js - Centralized state management
+//Centralized state management
 
 const BlastState = {
   selectedFile: null,

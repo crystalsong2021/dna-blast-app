@@ -1,4 +1,4 @@
-// results.js - Result rendering and table management
+// Result rendering and table management
 
 const ResultsRenderer = {
   /**

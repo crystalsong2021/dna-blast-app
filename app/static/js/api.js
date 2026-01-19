@@ -1,4 +1,4 @@
-// api.js - API communication layer
+//API communication layer
 
 const BlastAPI = {
   /**

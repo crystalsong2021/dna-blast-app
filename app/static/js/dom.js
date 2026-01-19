@@ -1,4 +1,4 @@
-// dom.js - Cached DOM element references
+//Cached DOM element references
 
 const DOMElements = {
   form: null,

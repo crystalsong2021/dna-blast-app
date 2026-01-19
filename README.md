@@ -106,7 +106,27 @@ pytest
 ```
 
 ---
+### BLAST Integration
 
+Sequences are submitted to NCBI BLAST using Biopython’s `NCBIWWW.qblast` API
+(`blastn` against the `core_nt` database). By default, `qblast` returns results
+in XML format, which are parsed using `Bio.Blast.NCBIXML`.
+
+This follows the recommended usage pattern in the Biopython documentation:
+- https://biopython.org/docs/latest/api/Bio.Blast.NCBIWWW.html
+- https://biopython.org/docs/latest/Tutorial/chapter_blast.html
+
+---
+### Design Decisions & Limitations
+
+- BLAST queries are executed synchronously for simplicity. In a production
+  environment, these would be handled asynchronously to avoid blocking the
+  web server.
+- Only the top HSP per alignment is displayed to keep results readable.
+- Multi-sequence FASTA files are validated but processed sequentially.
+- Client-side validation prevents empty submissions; server-side validation
+  exists as a safety net.
+---
 ## Notes & Recommendations
 
 - Default behavior limits top hits to protect against long runtimes and NCBI rate limits. Make hit count configurable with a reasonable server-side cap.
