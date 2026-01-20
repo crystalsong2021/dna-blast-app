@@ -2,7 +2,15 @@
 Simple tests for FASTA validation logic
 Run with: python test_validation.py
 """
+import sys
+from pathlib import Path
 
+# Ensure project root is on sys.path so `import app` works when running tests
+project_root = str(Path(__file__).resolve().parents[1])
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+from textwrap import dedent
 from app.services.fasta import validate_fasta
 
 def test_valid_fasta():
@@ -75,11 +83,12 @@ def test_with_n_character():
 
 def test_multiple_fasta_sequences():
     """Test FASTA input containing multiple sequences"""
-    fasta = """>seq1
-    ATCGATCGATCGATCGATCG
-    >seq2
-    GCTAGCTAGCTAGCTAGCTA
-    """
+    fasta = dedent("""\
+        >seq1
+        ATCGATCGATCGATCGATCG
+        >seq2
+        GCTAGCTAGCTAGCTAGCTA
+    """)
 
     is_valid, error, sequences = validate_fasta(fasta)
 

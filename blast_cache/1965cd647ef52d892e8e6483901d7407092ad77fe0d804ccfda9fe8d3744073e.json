@@ -1,0 +1,116 @@
+{
+  "query_id": "No definition line",
+  "query_length": 48,
+  "hits": [
+    {
+      "title": "gi|2515677352|ref|XM_057020785.1| PREDICTED: Takifugu flavidus uncharacterized protein K02A2.6-like (LOC130518307), transcript variant X1, mRNA",
+      "accession": "XM_057020785",
+      "length": 12910,
+      "percent_identity": 91.43,
+      "alignment_length": 35,
+      "e_value": 0.148956,
+      "score": 51.0,
+      "identities": 32,
+      "gaps": 1
+    },
+    {
+      "title": "gi|2515677354|ref|XM_057020786.1| PREDICTED: Takifugu flavidus uncharacterized protein K02A2.6-like (LOC130518307), transcript variant X2, mRNA",
+      "accession": "XM_057020786",
+      "length": 12902,
+      "percent_identity": 91.43,
+      "alignment_length": 35,
+      "e_value": 0.148956,
+      "score": 51.0,
+      "identities": 32,
+      "gaps": 1
+    },
+    {
+      "title": "gi|3125665449|emb|OZ373315.1| Lotoria lotoria genome assembly, chromosome: 19",
+      "accession": "OZ373315",
+      "length": 80735440,
+      "percent_identity": 91.18,
+      "alignment_length": 34,
+      "e_value": 0.519907,
+      "score": 49.0,
+      "identities": 31,
+      "gaps": 1
+    },
+    {
+      "title": "gi|2173963375|ref|XM_014192858.2| PREDICTED: Salmo salar cytosolic 5'-nucleotidase 3 (LOC106601014), mRNA",
+      "accession": "XM_014192858",
+      "length": 1588,
+      "percent_identity": 84.62,
+      "alignment_length": 39,
+      "e_value": 0.519907,
+      "score": 48.0,
+      "identities": 33,
+      "gaps": 0
+    },
+    {
+      "title": "gi|1523728850|gb|MH401195.1| Aspergillus pseudoglaucus isolate 51-1 SLA2 (sla2) gene, partial cds; MAT2-4 (MAT2-4) and MAT2-1 (MAT2-1) genes, complete cds; and APN2 (apn2) gene, partial cds",
+      "accession": "MH401195",
+      "length": 8051,
+      "percent_identity": 93.33,
+      "alignment_length": 30,
+      "e_value": 1.81465,
+      "score": 47.0,
+      "identities": 28,
+      "gaps": 2
+    },
+    {
+      "title": "gi|2156927588|ref|XM_045215162.1| PREDICTED: Coregonus clupeaformis taspase, threonine aspartase, 1 (tasp1), transcript variant X3, mRNA",
+      "accession": "XM_045215162",
+      "length": 3087,
+      "percent_identity": 87.88,
+      "alignment_length": 33,
+      "e_value": 1.81465,
+      "score": 46.0,
+      "identities": 29,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3034427468|emb|LR880657.2| Poecilia reticulata genome assembly, chromosome: 13",
+      "accession": "LR880657",
+      "length": 35112142,
+      "percent_identity": 93.33,
+      "alignment_length": 30,
+      "e_value": 1.81465,
+      "score": 46.0,
+      "identities": 28,
+      "gaps": 1
+    },
+    {
+      "title": "gi|2065111129|ref|XM_024438655.2| PREDICTED: Oncorhynchus tshawytscha UPF0561 protein C2orf68 homolog (LOC112262856), mRNA",
+      "accession": "XM_024438655",
+      "length": 2814,
+      "percent_identity": 93.33,
+      "alignment_length": 30,
+      "e_value": 1.81465,
+      "score": 46.0,
+      "identities": 28,
+      "gaps": 1
+    },
+    {
+      "title": "gi|3126473372|emb|OZ364077.2| Euprymna scolopes genome assembly, chromosome: 32",
+      "accession": "OZ364077",
+      "length": 99995008,
+      "percent_identity": 91.18,
+      "alignment_length": 34,
+      "e_value": 6.33377,
+      "score": 45.0,
+      "identities": 31,
+      "gaps": 2
+    },
+    {
+      "title": "gi|3129608264|emb|OZ375435.1| Acronicta albovenosa genome assembly, chromosome: 17",
+      "accession": "OZ375435",
+      "length": 17859570,
+      "percent_identity": 85.71,
+      "alignment_length": 35,
+      "e_value": 6.33377,
+      "score": 45.0,
+      "identities": 30,
+      "gaps": 0
+    }
+  ]
+}

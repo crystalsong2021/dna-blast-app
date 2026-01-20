@@ -2,6 +2,8 @@
 
 Lightweight web app for submitting DNA sequences in FASTA format and running NCBI BLAST (blastn) using Biopython. Designed as a demo with a simple Flask backend and a modular vanilla-JS frontend.
 
+**Repository:** https://github.com/crystalsong2021/dna-blast-app
+
 ---
 
 ## Features
@@ -26,63 +28,110 @@ Lightweight web app for submitting DNA sequences in FASTA format and running NCB
 ## Project structure
 
 ```
-app/
-├── __init__.py               # Flask app factory / initialization
-├── config.py                 # Environment & NCBI settings
-├── routes.py                 # API endpoints
-├── services/
-│   ├── blast.py              # Biopython + NCBI interaction
-│   ├── cache.py              # Simple caching utilities
-│   ├── fasta.py              # FASTA parsing / validation
-│   └── mock.py               # Mock helpers for tests/dev
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       ├── api.js
-│       ├── dom.js
-│       ├── file-handler.js
-│       ├── main.js
-│       ├── results.js
-│       ├── state.js
-│       └── ui-helpers.js
-└── templates/
-    └── index.html
-    
-```
-Other files (root)
-- requirements.txt
-- README.md
 
+dna-blast-app/
+├── app/                          # Flask application package
+│   ├── __init__.py               # Flask app factory / initialization
+│   ├── config.py                 # Environment & NCBI settings
+│   ├── routes.py                 # API endpoints
+│   ├── services/                 # Business logic & helpers
+│   │   ├── blast.py              # Biopython + NCBI interaction (uses blast_cache/)
+│   │   ├── cache.py              # Simple caching utilities
+│   │   ├── fasta.py              # FASTA parsing / validation
+│   │   └── mock.py               # Mock helpers for tests/dev
+│   ├── static/                   # Static assets served by Flask
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── js/
+│   │       ├── api.js            # Fetch/XHR helpers for backend endpoints (/blast, /blast_single)
+│   │       ├── dom.js            # Centralized DOM selectors and element references
+│   │       ├── file-handler.js   # File input, drag/drop, read and validate FASTA files
+│   │       ├── main.js           # App entrypoint: event wiring, submit flow, orchestration
+│   │       ├── results.js        # Render result tabs, tables and incremental updates per-sequence
+│   │       ├── state.js          # Client-side state management and simple data helpers
+│   │       └── ui-helpers.js     # Small UI utilities (alerts, progress bar, escape/output helpers)
+│   └── templates/
+│       └── index.html
+├── blast_cache/                  # Local cache directory for BLAST results (JSON files keyed by sequence hash)
+├── tests/                        # pytest-discovered tests and test data
+│   ├── test_validation.py
+│   └── data/
+│       └── test_sequence.fasta
+├── run.py                        # Simple local entrypoint (optional)
+├── requirements.txt
+└── README.md
+
+Notes
+- blast_cache/ is the local cache used by app/services/blast.py to store/read BLAST results and avoid repeated NCBI queries.
+
+```
 ---
 
 ## Installation (macOS / Linux)
 
-1. Create and activate virtualenv
+### Prerequisites
+- Python 3.8+
+- pip
+
+### Setup
+
+1. **Clone the repository**
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+   git clone https://github.com/crystalsong2021/dna-blast-app.git
+   cd dna-blast-app
 ```
 
-2. Install dependencies
+2. **Create and activate virtual environment**
 ```bash
-pip install -r requirements.txt
+   python3 -m venv venv
+   source venv/bin/activate  # On macOS/Linux
+   # venv\Scripts\activate   # On Windows
 ```
 
-3. Run the app (Flask)
+3. **Install dependencies**
 ```bash
-export FLASK_APP=app
-export FLASK_ENV=development
+   pip install -r requirements.txt
+```
+
+
+## Running the Application
+
+**Option 1: Using Flask CLI (recommended)**
+```bash
+export FLASK_APP=app          # On macOS/Linux
+export FLASK_ENV=development  # Optional: enables debug mode
 flask run --port 5001
 ```
-or
+
+**Option 2: Using Python module**
 ```bash
 python -m flask run --app app --port 5001
 ```
 
-Open: http://127.0.0.1:5001
+**Option 3: Using run.py**
+```bash
+python run.py
+```
 
-Notes: these commands expect app/__init__.py to expose an app factory or app object. If your entrypoint differs, run the script you use locally (for example: python run.py).
+Then open your browser to: **http://localhost:5001**
+
+## Configuration
+
+The app uses environment variables for configuration:
+- `FLASK_ENV`: Set to `development` for debug mode
+- See `app/config.py` for NCBI-specific settings
+
+## Testing
+```bash
+pytest tests/
+```
+
+## Features
+
+- Upload FASTA files or paste sequences directly
+- Run BLAST searches against NCBI databases
+- View results in organized tabs per sequence
+- Local caching to avoid redundant NCBI queries
 
 ---
 
@@ -93,19 +142,6 @@ Notes: these commands expect app/__init__.py to expose an app factory or app obj
 3. Frontend sends each sequence to /blast_single sequentially.
 4. Each /blast_single response is rendered immediately as it arrives (incremental tabs).
 5. Backend uses Biopython to call NCBI BLAST and parse XML results.
-
----
-
-## Testing
-
-If present, run the FASTA validation test:
-```bash
-python test_validation.py
-```
-Or run your test suite (pytest) if configured:
-```bash
-pytest
-```
 
 ---
 ### BLAST Integration

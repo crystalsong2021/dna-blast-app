@@ -1,0 +1,116 @@
+{
+  "query_id": "No definition line",
+  "query_length": 319,
+  "hits": [
+    {
+      "title": "gi|2837937890|gb|PQ495790.1| Bacillus paramycoides strain SB3 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ495790",
+      "length": 1491,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2835598323|gb|PQ481848.1| Bacillus tropicus strain WARP_Ag 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ481848",
+      "length": 1440,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3117043492|gb|PX599713.1| Bacillus cereus strain NBAIR SW-53 16S ribosomal RNA gene, partial sequence",
+      "accession": "PX599713",
+      "length": 1527,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3117043468|gb|PX599712.1| Bacillus paramycoides strain NBAIR SW-50 16S ribosomal RNA gene, partial sequence",
+      "accession": "PX599712",
+      "length": 1511,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|3033954363|gb|CP196408.1| Bacillus cereus strain Tor 16585 chromosome, complete genome",
+      "accession": "CP196408",
+      "length": 5270283,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2844843047|gb|PQ565637.1| Bacillus paramycoides strain B17 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ565637",
+      "length": 1503,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2805550428|gb|PQ340327.1| Bacillus cereus strain IFN14 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ340327",
+      "length": 1515,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2980446420|dbj|LC873056.1| Bacillus cereus 15-2 gene for 16S rRNA, partial sequence >gi|2987298576|dbj|LC875641.1| Bacillus cereus M16 gene for 16S rRNA, partial sequence",
+      "accession": "LC873056",
+      "length": 1501,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2877360552|gb|PQ839265.1| Bacillus cereus strain _ZYB-115.seq.Contig1 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ839265",
+      "length": 1512,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    },
+    {
+      "title": "gi|2864154792|gb|PQ676325.1| Bacillus paramycoides strain ABPLM2 16S ribosomal RNA gene, partial sequence",
+      "accession": "PQ676325",
+      "length": 1381,
+      "percent_identity": 100.0,
+      "alignment_length": 319,
+      "e_value": 7.99558e-160,
+      "score": 638.0,
+      "identities": 319,
+      "gaps": 0
+    }
+  ]
+}

@@ -1,3 +1,4 @@
 Flask==3.0.0
 biopython==1.83
 certifi==2024.2.2
+pytest
