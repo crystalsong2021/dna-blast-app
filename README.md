@@ -25,6 +25,7 @@ Lightweight web app for submitting DNA sequences in FASTA format and running NCB
 
 ## Project structure
 
+```
 app/
 ├── __init__.py               # Flask app factory / initialization
 ├── config.py                 # Environment & NCBI settings
@@ -47,7 +48,8 @@ app/
 │       └── ui-helpers.js
 └── templates/
     └── index.html
-
+    
+```
 Other files (root)
 - requirements.txt
 - README.md
